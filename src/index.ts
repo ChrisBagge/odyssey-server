@@ -1,5 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import typeDefs from './schema'
+import resolvers from './resolvers';
+import TrackAPI from './datasources/track-api';
 
 const mocks = {
   Query: () => ({
@@ -24,7 +26,12 @@ const mocks = {
 
 const server = new ApolloServer({
   typeDefs,
-  mocks
+  resolvers,
+  dataSources: () => {
+    return {
+      trackAPI: new TrackAPI()
+    };
+  }    
 });
 
 server.listen().then(() => {
