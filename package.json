@@ -4,7 +4,8 @@
   "description": "back-end demo app for Apollo's lift-off course",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "start": "node dist/index.js",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "apollo-datasource-rest": "^3.4.0",
